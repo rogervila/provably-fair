@@ -1,5 +1,7 @@
 <p align="center"><img src="https://i.imgur.com/Z0QCVwf.jpg" alt="Provably Fair" /></p>
 
+[![Build Status](https://travis-ci.org/rogervila/provably-fair.svg?branch=master)](https://travis-ci.org/rogervila/provably-fair)
+
 # Provably Fair
 
 ## About

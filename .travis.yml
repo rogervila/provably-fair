@@ -11,6 +11,7 @@ cache:
     - $HOME/.composer/cache
 
 before_script:
+  - rm composer.lock
   - curl -s http://getcomposer.org/installer | php
   - php composer.phar install --dev
 

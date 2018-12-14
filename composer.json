@@ -1,0 +1,38 @@
+{
+    "name": "rogervila/provably-fair",
+    "description": "PHP implementation of Bustabit's Provably Fair system",
+    "keywords": [
+        "provably fair"
+    ],
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Roger Vilà",
+            "email": "rogervila@me.com"
+        }
+    ],
+    "require": {
+        "php": "^7.0.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^7.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "ProvablyFair\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\ProvablyFair\\": "tests/"
+        }
+    },
+    "config": {
+        "preferred-install": "dist",
+        "sort-packages": true,
+        "optimize-autoloader": true
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}

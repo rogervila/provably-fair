@@ -14,12 +14,7 @@ class Algorithm implements AlgorithmInterface
      * @param string $value
      */
     public function __construct(string $value)
-    {
-        // Force sonar error for checks
-        $a = 1;
-        $a = $a;
-        // End sonar error forced
-        
+    {        
         $this->setValue(trim($value));
 
         $this->assertAlgorithmIsValid();

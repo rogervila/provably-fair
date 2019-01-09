@@ -3,6 +3,13 @@
 [![Build Status](https://travis-ci.org/rogervila/provably-fair.svg?branch=master)](https://travis-ci.org/rogervila/provably-fair)
 [![StyleCI](https://github.styleci.io/repos/161685043/shield?branch=master)](https://github.styleci.io/repos/161685043)
 [![SonarCloud](https://sonarcloud.io/api/project_badges/measure?project=provably-fair&metric=alert_status)](https://sonarcloud.io/dashboard?id=provably-fair)
+[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=provably-fair&metric=coverage)](https://sonarcloud.io/dashboard?id=provably-fair)
+[![Maintainability](https://api.codeclimate.com/v1/badges/84d9fb2af3ebb2319e7e/maintainability)](https://codeclimate.com/github/rogervila/provably-fair/maintainability)
+
+[![Latest Stable Version](https://poser.pugx.org/rogervila/provably-fair/v/stable)](https://packagist.org/packages/rogervila/provably-fair)
+[![Total Downloads](https://poser.pugx.org/rogervila/provably-fair/downloads)](https://packagist.org/packages/rogervila/provably-fair)
+[![License](https://poser.pugx.org/rogervila/provably-fair/license)](https://packagist.org/packages/rogervila/provably-fair)
+
 
 # Provably Fair
 

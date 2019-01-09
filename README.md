@@ -2,6 +2,7 @@
 
 [![Build Status](https://travis-ci.org/rogervila/provably-fair.svg?branch=master)](https://travis-ci.org/rogervila/provably-fair)
 [![StyleCI](https://github.styleci.io/repos/161685043/shield?branch=master)](https://github.styleci.io/repos/161685043)
+[![SonarCloud](https://sonarcloud.io/api/project_badges/measure?project=provably-fair&metric=alert_status)](https://sonarcloud.io/dashboard?id=provably-fair)
 
 # Provably Fair
 

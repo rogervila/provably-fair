@@ -15,7 +15,7 @@ before_script:
 
 script: 
   - vendor/bin/phpunit
-  - sonar-scanner
+  - sonar-scanner -Dsonar.projectKey=provably-fair -Dsonar.sources=.
 
 addons:
   sonarcloud:

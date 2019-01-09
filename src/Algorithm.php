@@ -14,7 +14,7 @@ class Algorithm implements AlgorithmInterface
      * @param string $value
      */
     public function __construct(string $value)
-    {        
+    {
         $this->setValue(trim($value));
 
         $this->assertAlgorithmIsValid();

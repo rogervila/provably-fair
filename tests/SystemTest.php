@@ -32,4 +32,16 @@ final class SystemTest extends TestCase
 
         $this->assertTrue(is_float($result));
     }
+
+    public function test_calculate_can_return_zero() : void
+    {
+        $system = $this->createSystem(self::SHA_512);
+
+        $serverSeed = new Seed('59f159c41fded24cfe3700b88daf1f6142db6d1b7539fc86e86a9c64a46a8f994dae5486a9ede3792a6fbb35fab024285249602222f3723a973d6d99c00a7c91');
+        $clientSeed = new Seed('example');
+
+        $result = $system->calculate($serverSeed, $clientSeed);
+
+        $this->assertEquals($result, 0);
+    }
 }

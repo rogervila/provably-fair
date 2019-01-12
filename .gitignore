@@ -1,3 +1,5 @@
 vendor
 sonar*
 .scannerwork
+junit-logfile.xml
+clover.xml

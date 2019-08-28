@@ -1,6 +1,7 @@
 <p align="center"><img src="https://i.imgur.com/Z0QCVwf.jpg" alt="Provably Fair" /></p>
 
 [![Build Status](https://travis-ci.org/rogervila/provably-fair.svg?branch=master)](https://travis-ci.org/rogervila/provably-fair)
+[![Build status](https://ci.appveyor.com/api/projects/status/vs90uj6b66s0ag6s?svg=true)](https://ci.appveyor.com/project/roger-vila/provably-fair)
 [![StyleCI](https://github.styleci.io/repos/161685043/shield?branch=master)](https://github.styleci.io/repos/161685043)
 [![SonarCloud](https://sonarcloud.io/api/project_badges/measure?project=provably-fair&metric=alert_status)](https://sonarcloud.io/dashboard?id=provably-fair)
 [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=provably-fair&metric=coverage)](https://sonarcloud.io/dashboard?id=provably-fair)

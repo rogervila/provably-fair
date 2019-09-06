@@ -3,3 +3,4 @@ sonar*
 .scannerwork
 junit-logfile.xml
 clover.xml
+composer.lock

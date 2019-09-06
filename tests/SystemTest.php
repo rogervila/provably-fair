@@ -15,7 +15,7 @@ final class SystemTest extends TestCase
         return new System(new Algorithm($algorithmString));
     }
 
-    public function test_generate_server_seed_returns_seed_interface() : void
+    public function test_generate_server_seed_returns_seed_interface()
     {
         $system = $this->createSystem(self::SHA_512);
 
@@ -24,7 +24,7 @@ final class SystemTest extends TestCase
         $this->assertTrue($result instanceof SeedInterface);
     }
 
-    public function test_calculate_returns_float() : void
+    public function test_calculate_returns_float()
     {
         $system = $this->createSystem(self::SHA_512);
 
@@ -33,7 +33,7 @@ final class SystemTest extends TestCase
         $this->assertTrue(is_float($result));
     }
 
-    public function test_calculate_can_return_zero() : void
+    public function test_calculate_can_return_zero()
     {
         $system = $this->createSystem(self::SHA_512);
 

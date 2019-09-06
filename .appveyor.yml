@@ -8,6 +8,7 @@ environment:
         - php_ver: 7.3.1
         - php_ver: 7.2.14
         - php_ver: 7.1.26
+        - php_ver: 7.0.33
 
 cache:
     - '%APPDATA%\Composer'

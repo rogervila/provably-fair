@@ -16,7 +16,7 @@
 
 ## About
 
-PHP implementation of Bustabit's Provably Fair system. [Demo here](http://provablyfair.atwebpages.com/)
+PHP implementation of Bustabit's Provably Fair system. [Demo here](http://provably-fair.atwebpages.com/)
 
 > More info: https://bitcointalk.org/index.php?topic=922898.0
 

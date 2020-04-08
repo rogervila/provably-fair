@@ -14,6 +14,21 @@ final class SystemTest extends TestCase
     {
         return new System(new Algorithm($algorithmString));
     }
+    
+    public function test_calculate_expected_result()
+    {
+        $system = $this->createSystem(self::SHA_512);
+
+        $serverSeed = new Seed('example');
+        $clientSeed = new Seed('example');
+
+        $result = $system->calculate($serverSeed, $clientSeed);
+        $this->assertEquals($result, 214.0);
+
+        $serverSeed = $system->generateServerSeed($serverSeed);
+
+        $this->assertEquals($serverSeed->getValue(), '3bb12eda3c298db5de25597f54d924f2e17e78a26ad8953ed8218ee682f0bbbe9021e2f3009d152c911bf1f25ec683a902714166767afbd8e5bd0fb0124ecb8a');
+    }
 
     public function test_generate_server_seed_returns_seed_interface()
     {

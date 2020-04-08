@@ -7,11 +7,6 @@ php:
   - 7.3
   - 7.4
 
-jobs:
-  include:
-  - php: 7.4
-    env: RUN_SONAR=true
-
 cache:
   directories:
     - $HOME/.composer/cache
@@ -22,4 +17,4 @@ before_script:
 
 script:
   - vendor/bin/phpunit
-  - $RUN_SONAR && vendor/bin/sonar-scanner -Dsonar.login=$SONAR_LOGIN
+  - vendor/bin/sonar-scanner -Dsonar.login=$SONAR_LOGIN

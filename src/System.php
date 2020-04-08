@@ -26,7 +26,7 @@ class System implements SystemInterface
      *
      * @return SeedInterface
      */
-    public function generateServerSeed(SeedInterface $seed) : SeedInterface
+    public function generateServerSeed(SeedInterface $seed): SeedInterface
     {
         $class = get_class($seed);
 
@@ -41,7 +41,7 @@ class System implements SystemInterface
      *
      * @return string
      */
-    private function createHmac(string $key, string $value) : string
+    private function createHmac(string $key, string $value): string
     {
         return hash_hmac($this->algorithm->getValue(), $value, $key);
     }
@@ -50,23 +50,23 @@ class System implements SystemInterface
      * @param string $hash
      * @param int $mod
      *
-     * @return int
+     * @return bool
      */
-    private static function divisible(string $hash, int $mod)
+    private static function divisible(string $hash, int $mod): bool
     {
         /*  We will read in 4 hex at a time, but the first chunk might be a bit smaller
             so ABCDEFGHIJ should be chunked like  AB CDEF GHIJ */
-        $val = 0;
+        $value = 0;
 
-        $l = strlen($hash);
-        $o = $l % 4;
-        $i = $o > 0 ? $o - 4 : 0;
+        $hash_length = strlen($hash);
+        $hash_mod = $hash_length % 4;
+        $index = $hash_mod > 0 ? $hash_mod - 4 : 0;
 
-        for ($i; $i < $l; $i += 4) {
-            $val = (($val << 16) + intval(substr($hash, $i, $i + 4), 16)) % $mod;
+        for ($index; $index < $hash_length; $index += 4) {
+            $value = (($value << 16) + intval(substr($hash, $index, $index + 4), 16)) % $mod;
         }
 
-        return $val == 0;
+        return $value == 0;
     }
 
     /**
@@ -75,7 +75,7 @@ class System implements SystemInterface
      *
      * @return float
      */
-    public function calculate(SeedInterface $serverSeed, SeedInterface $clientSeed) : float
+    public function calculate(SeedInterface $serverSeed, SeedInterface $clientSeed): float
     {
         $hash = $this->createHmac($serverSeed->getValue(), $clientSeed->getValue());
 
@@ -85,9 +85,9 @@ class System implements SystemInterface
         }
 
         /* Use the most significant 52-bit from the hash to calculate the result */
-        $h = intval(substr($hash, 0, 52 / 4), 16);
-        $e = pow(2, 52);
+        $hash_integer = intval(substr($hash, 0, 52 / 4), 16);
+        $exp = pow(2, 52);
 
-        return floor((100 * $e - $h) / ($e - $h));
+        return floor((100 * $exp - $hash_integer) / ($exp - $hash_integer));
     }
 }

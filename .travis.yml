@@ -17,10 +17,4 @@ before_script:
 
 script:
   - vendor/bin/phpunit
-  - sonar-scanner -Dsonar.projectKey=provably-fair -Dsonar.sources=. -Dsonar.exclusions='index.php, vendor/**, tests/**' -Dsonar.php.tests.reportPath=junit-logfile.xml -Dsonar.php.coverage.reportPaths=clover.xml
-
-addons:
-  sonarcloud:
-    organization: "rogervila-github"
-    token:
-      secure: "GxFwORpZKa3gbAch+wxbR6xJrApYFhzC4Vp/yvijD5OyucU0dsYCpu4afaAMyUAccRV8jJp0iB3EVrxWcSKpGhJobd861SNDGN3jIKFDH3OxKyAcb7fUO4l1AdEzxLyu151AfJHmkU9vCbteSyYLpYGnUdU+yPApz9+2QhKVImsIycQtIsWG8ULtmZwhlHftK/qdiGWC55k28P5sqA+GLUEnI8RGiX2PlJ+Fc68jF24hAkC1W7fzMTA3q14zKT63SR0fOouO9v6HFu0VNj1yZQl4gOfHVw4A5BstmzYMQ62/KY8S0I5h3zsPF9Uud0zjXa/3iji1+KQSvZY8sRY9IkTGA0pTMviDr/djeDAI4KLqXNUonGIotWCb+muNxdIWvzmHoOs79zNLPskPLk3JEDbsB931aBupr8pnp0ovotLLSRhyuboke+k57T9K5T7ojCCa14vmHbcioZF+6lGlMulkUMCM4AHxJTve/rk/37UTomy/Z7F7n+eOmXJGKUzULs5evIE4bl7l5/qMbYQdS7GMWKRiFWhhFkRR7KY9DIjlXISb+r7bEPkT2RoZBEl13Qt95/4CBckTred1pYimhsf9XumRxEjxm24+ZHdu5moTgWcHM9SOjCHTFoUIJpfSJWhr4xxqiBuBozGWaU9bh+JywZoRA++///NE08AIpLI="
+  - vendor/bin/sonar-scanner -Dsonar.login=$SONAR_LOGIN

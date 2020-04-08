@@ -58,9 +58,11 @@ class System implements SystemInterface
             so ABCDEFGHIJ should be chunked like  AB CDEF GHIJ */
         $val = 0;
 
-        $o = strlen($hash) % 4;
+        $l = strlen($hash);
+        $o = $l % 4;
+        $i = $o > 0 ? $o - 4 : 0;
 
-        for ($i = $o > 0 ? $o - 4 : 0; $i < strlen($hash); $i += 4) {
+        for ($i; $i < $l; $i += 4) {
             $val = (($val << 16) + intval(substr($hash, $i, $i + 4), 16)) % $mod;
         }
 

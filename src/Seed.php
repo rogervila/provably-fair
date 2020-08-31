@@ -12,9 +12,6 @@ class Seed implements SeedInterface
 
     const MINIMUM_LENGTH = 1;
 
-    /**
-     * @param string $value
-     */
     public function __construct(string $value)
     {
         $this->setValue(trim($value));
@@ -22,10 +19,7 @@ class Seed implements SeedInterface
         $this->assertSeedIsValid();
     }
 
-    /**
-     * @return void
-     */
-    private function assertSeedIsValid()
+    private function assertSeedIsValid(): void
     {
         if (strlen($this->value) < self::MINIMUM_LENGTH) {
             throw new InvalidSeedException($this->value . ' length should be at least ' . self::MINIMUM_LENGTH);

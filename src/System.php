@@ -13,19 +13,11 @@ class System implements SystemInterface
      */
     private $algorithm;
 
-    /**
-     * @param Algorithm $algorithm
-     */
     public function __construct(AlgorithmInterface $algorithm)
     {
         $this->algorithm = $algorithm;
     }
 
-    /**
-     * @param SeedInterface $seed
-     *
-     * @return SeedInterface
-     */
     public function generateServerSeed(SeedInterface $seed): SeedInterface
     {
         $class = get_class($seed);
@@ -35,23 +27,11 @@ class System implements SystemInterface
         return new $class($hash);
     }
 
-    /**
-     * @param string $key
-     * @param string $value
-     *
-     * @return string
-     */
     private function createHmac(string $key, string $value): string
     {
         return hash_hmac($this->algorithm->getValue(), $value, $key);
     }
 
-    /**
-     * @param string $hash
-     * @param int $mod
-     *
-     * @return bool
-     */
     private static function divisible(string $hash, int $mod): bool
     {
         /*  We will read in 4 hex at a time, but the first chunk might be a bit smaller
@@ -69,12 +49,6 @@ class System implements SystemInterface
         return $value == 0;
     }
 
-    /**
-     * @param string $serverSeed
-     * @param string $clientSeed
-     *
-     * @return float
-     */
     public function calculate(SeedInterface $serverSeed, SeedInterface $clientSeed): float
     {
         $hash = $this->createHmac($serverSeed->getValue(), $clientSeed->getValue());

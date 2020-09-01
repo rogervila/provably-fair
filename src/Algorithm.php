@@ -10,6 +10,9 @@ class Algorithm implements AlgorithmInterface
 {
     use HasValue;
 
+    /**
+     * @param string $value
+     */
     public function __construct(string $value)
     {
         $this->setValue(trim($value));
@@ -17,7 +20,12 @@ class Algorithm implements AlgorithmInterface
         $this->assertAlgorithmIsValid();
     }
 
-    private function assertAlgorithmIsValid(): void
+    /**
+     * @throws \ProvablyFair\Exceptions\InvalidAlgorithmException
+     *
+     * @return void
+     */
+    private function assertAlgorithmIsValid()
     {
         if (!in_array($this->value, hash_algos())) {
             throw new InvalidAlgorithmException($this->value . ' is not a valid algorithm');

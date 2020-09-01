@@ -2,22 +2,30 @@
 
 namespace ProvablyFair;
 
-use ProvablyFair\Contracts\SystemInterface;
 use ProvablyFair\Contracts\AlgorithmInterface;
 use ProvablyFair\Contracts\SeedInterface;
+use ProvablyFair\Contracts\SystemInterface;
 
 class System implements SystemInterface
 {
     /**
-     * @var AlgorithmInterface
+     * @var \ProvablyFair\Contracts\AlgorithmInterface
      */
     private $algorithm;
 
+    /**
+     * @param \ProvablyFair\Contracts\AlgorithmInterface $algorithm
+     */
     public function __construct(AlgorithmInterface $algorithm)
     {
         $this->algorithm = $algorithm;
     }
 
+    /**
+     * @param  \ProvablyFair\Contracts\SeedInterface $seed
+     *
+     * @return \ProvablyFair\Contracts\SeedInterface
+     */
     public function generateServerSeed(SeedInterface $seed): SeedInterface
     {
         $class = get_class($seed);
@@ -27,11 +35,23 @@ class System implements SystemInterface
         return new $class($hash);
     }
 
+    /**
+     * @param string $key
+     * @param string $value
+     *
+     * @return string
+     */
     private function createHmac(string $key, string $value): string
     {
         return hash_hmac($this->algorithm->getValue(), $value, $key);
     }
 
+    /**
+     * @param string $hash
+     * @param int $mod
+     *
+     * @return bool
+     */
     private static function divisible(string $hash, int $mod): bool
     {
         /*  We will read in 4 hex at a time, but the first chunk might be a bit smaller
@@ -49,6 +69,12 @@ class System implements SystemInterface
         return $value == 0;
     }
 
+    /**
+     * @param \ProvablyFair\Contracts\SeedInterface $serverSeed
+     * @param \ProvablyFair\Contracts\SeedInterface $clientSeed
+     *
+     * @return float
+     */
     public function calculate(SeedInterface $serverSeed, SeedInterface $clientSeed): float
     {
         $hash = $this->createHmac($serverSeed->getValue(), $clientSeed->getValue());

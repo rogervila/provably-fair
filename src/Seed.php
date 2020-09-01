@@ -10,8 +10,14 @@ class Seed implements SeedInterface
 {
     use HasValue;
 
+    /**
+     * @var int
+     */
     const MINIMUM_LENGTH = 1;
 
+    /**
+     * @param string $value
+     */
     public function __construct(string $value)
     {
         $this->setValue(trim($value));
@@ -19,7 +25,12 @@ class Seed implements SeedInterface
         $this->assertSeedIsValid();
     }
 
-    private function assertSeedIsValid(): void
+    /**
+     * @throws \ProvablyFair\Exceptions\InvalidSeedException
+     *
+     * @return void
+     */
+    private function assertSeedIsValid()
     {
         if (strlen($this->value) < self::MINIMUM_LENGTH) {
             throw new InvalidSeedException($this->value . ' length should be at least ' . self::MINIMUM_LENGTH);

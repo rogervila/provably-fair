@@ -2,7 +2,6 @@
 
 use PHPUnit\Framework\TestCase;
 use ProvablyFair\Algorithm;
-use ProvablyFair\Contracts\SeedInterface;
 use ProvablyFair\Exceptions\InvalidAlgorithmException;
 
 final class AlgorithmTest extends TestCase

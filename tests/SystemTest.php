@@ -1,10 +1,10 @@
 <?php
 
 use PHPUnit\Framework\TestCase;
-use ProvablyFair\System;
 use ProvablyFair\Algorithm;
-use ProvablyFair\Seed;
 use ProvablyFair\Contracts\SeedInterface;
+use ProvablyFair\Seed;
+use ProvablyFair\System;
 
 final class SystemTest extends TestCase
 {

@@ -1,9 +1,8 @@
 <?php
 
 use PHPUnit\Framework\TestCase;
-use ProvablyFair\Seed;
-use ProvablyFair\Contracts\SeedInterface;
 use ProvablyFair\Exceptions\InvalidSeedException;
+use ProvablyFair\Seed;
 
 final class SeedTest extends TestCase
 {

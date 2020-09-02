@@ -6,6 +6,9 @@ use ProvablyFair\Seed;
 
 final class SeedTest extends TestCase
 {
+    /**
+     * @return void
+     */
     public function test_fails_if_seed_is_not_valid()
     {
         $this->expectException(InvalidSeedException::class);

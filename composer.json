@@ -42,9 +42,9 @@
     "scripts": {
         "test": [
             "composer validate",
-            "vendor\\bin\\phpdoccheck",
-            "vendor\\bin\\phpstan analyse",
-            "vendor\\bin\\phpunit"
+            "vendor/bin/phpdoccheck",
+            "vendor/bin/phpstan analyse",
+            "vendor/bin/phpunit"
         ]
     }
 }

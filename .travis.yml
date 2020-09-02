@@ -12,9 +12,9 @@ cache:
     - $HOME/.composer/cache
 
 before_script:
-  - curl -s http://getcomposer.org/installer | php
-  - php composer.phar install --dev
+  - curl https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer --version=1.10.10
+  - composer install --dev
 
 script:
-  - php composer.phar test
+  - composer test
   - vendor/bin/sonar-scanner -Dsonar.login=$SONAR_LOGIN

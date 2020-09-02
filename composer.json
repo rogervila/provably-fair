@@ -16,8 +16,9 @@
         "php": "^7.0.0"
     },
     "require-dev": {
-        "block8/php-docblock-checker": "^1.10",
+        "dancryer/php-docblock-checker": "^1.10",
         "friendsofphp/php-cs-fixer": "^2.16",
+        "phpstan/phpstan": "0.*.*",
         "phpunit/phpunit": "^6.0|^7.0|^8.0|^9.0",
         "rogervila/php-sonarqube-scanner": "^1.0"
     },
@@ -37,5 +38,13 @@
         "optimize-autoloader": true
     },
     "minimum-stability": "dev",
-    "prefer-stable": true
+    "prefer-stable": true,
+    "scripts": {
+        "test": [
+            "composer validate",
+            "vendor\\bin\\phpdoccheck",
+            "vendor\\bin\\phpstan analyse",
+            "vendor\\bin\\phpunit"
+        ]
+    }
 }

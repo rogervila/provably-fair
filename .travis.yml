@@ -11,9 +11,10 @@ cache:
   directories:
     - $HOME/.composer/cache
 
-# before_script:
-#   - curl https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer --version=1.10.10
-#   - composer install --dev
+before_script:
+  - pwd
+# - curl https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer --version=1.10.10
+  - composer install --dev
 
 script:
   - pwd

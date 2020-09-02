@@ -43,7 +43,7 @@
         "test": [
             "composer validate",
             "vendor/bin/phpdoccheck",
-            "vendor/bin/phpstan analyse",
+            "vendor/bin/phpstan analyse --level 8 src tests",
             "vendor/bin/phpunit"
         ]
     }

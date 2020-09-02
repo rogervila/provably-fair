@@ -16,5 +16,5 @@ before_script:
   - php composer.phar install --dev
 
 script:
-  - vendor/bin/phpunit
+  - php composer.phar test
   - vendor/bin/sonar-scanner -Dsonar.login=$SONAR_LOGIN

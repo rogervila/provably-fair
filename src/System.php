@@ -66,7 +66,7 @@ class System implements SystemInterface
             $value = (($value << 16) + intval(substr($hash, $index, $index + 4), 16)) % $mod;
         }
 
-        return $value == 0;
+        return $value === 0;
     }
 
     /**

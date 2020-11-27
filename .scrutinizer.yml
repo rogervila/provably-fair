@@ -1,0 +1,13 @@
+build:
+  environment:
+    php:
+      version: 8.0.0
+      pecl_extensions:
+        - zip
+
+filter:
+  paths:
+    - 'src/*'
+  excluded_paths:
+    - 'vendor/*'
+    - 'tests/*'

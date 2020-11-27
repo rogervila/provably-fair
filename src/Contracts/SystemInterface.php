@@ -12,8 +12,8 @@ interface SystemInterface
     public function generateServerSeed(SeedInterface $seed) : SeedInterface;
 
     /**
-     * @param string $serverSeed
-     * @param string $clientSeed
+     * @param SeedInterface $serverSeed
+     * @param SeedInterface $clientSeed
      *
      * @return float
      */

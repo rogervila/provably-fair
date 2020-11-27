@@ -10,6 +10,9 @@ class Seed implements SeedInterface
 {
     use HasValue;
 
+    /**
+     * @var int
+     */
     const MINIMUM_LENGTH = 1;
 
     /**
@@ -23,6 +26,8 @@ class Seed implements SeedInterface
     }
 
     /**
+     * @throws \ProvablyFair\Exceptions\InvalidSeedException
+     *
      * @return void
      */
     private function assertSeedIsValid()

@@ -21,6 +21,8 @@ class Algorithm implements AlgorithmInterface
     }
 
     /**
+     * @throws \ProvablyFair\Exceptions\InvalidAlgorithmException
+     *
      * @return void
      */
     private function assertAlgorithmIsValid()

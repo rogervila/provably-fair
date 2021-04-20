@@ -14,6 +14,10 @@
 
 # Provably Fair
 
+```sh
+composer require rogervila/provably-fair
+```
+
 ## About
 
 PHP implementation of Bustabit's Provably Fair system. [Demo here](https://provably-fair.vercel.app)

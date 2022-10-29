@@ -77,5 +77,7 @@ $resultAmount = isset($_GET['amount']) ? $_GET['amount'] : AMOUNT;
             <?php endfor; ?>
         </table>
     </div>
+
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4739670084306482" crossorigin="anonymous"></script>
 </body>
 </html>

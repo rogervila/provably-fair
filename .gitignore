@@ -4,6 +4,5 @@ sonar*
 junit-logfile.xml
 clover.xml
 composer.lock
-.phpunit.result.cache
 .phpdoc*
-.php_cs.cache
+*.cache

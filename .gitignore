@@ -6,3 +6,4 @@ clover.xml
 composer.lock
 .phpdoc*
 *.cache
+.idea

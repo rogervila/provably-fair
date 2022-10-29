@@ -17,6 +17,8 @@ class Seed implements SeedInterface
 
     /**
      * @param string $value
+     *
+     * @throws InvalidSeedException
      */
     public function __construct(string $value)
     {
@@ -26,7 +28,7 @@ class Seed implements SeedInterface
     }
 
     /**
-     * @throws \ProvablyFair\Exceptions\InvalidSeedException
+     * @throws InvalidSeedException
      *
      * @return void
      */

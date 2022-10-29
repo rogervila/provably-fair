@@ -12,6 +12,8 @@ class Algorithm implements AlgorithmInterface
 
     /**
      * @param string $value
+     *
+     * @throws InvalidAlgorithmException
      */
     public function __construct(string $value)
     {
@@ -21,7 +23,7 @@ class Algorithm implements AlgorithmInterface
     }
 
     /**
-     * @throws \ProvablyFair\Exceptions\InvalidAlgorithmException
+     * @throws InvalidAlgorithmException
      *
      * @return void
      */

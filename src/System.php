@@ -9,12 +9,12 @@ use ProvablyFair\Contracts\SystemInterface;
 class System implements SystemInterface
 {
     /**
-     * @var \ProvablyFair\Contracts\AlgorithmInterface
+     * @var AlgorithmInterface
      */
     private $algorithm;
 
     /**
-     * @param \ProvablyFair\Contracts\AlgorithmInterface $algorithm
+     * @param AlgorithmInterface $algorithm
      */
     public function __construct(AlgorithmInterface $algorithm)
     {
@@ -22,9 +22,9 @@ class System implements SystemInterface
     }
 
     /**
-     * @param  \ProvablyFair\Contracts\SeedInterface $seed
+     * @param SeedInterface $seed
      *
-     * @return \ProvablyFair\Contracts\SeedInterface
+     * @return SeedInterface
      */
     public function generateServerSeed(SeedInterface $seed): SeedInterface
     {
@@ -63,15 +63,15 @@ class System implements SystemInterface
         $index = $hash_mod > 0 ? $hash_mod - 4 : 0;
 
         for ($index; $index < $hash_length; $index += 4) {
-            $value = (($value << 16) + intval(substr($hash, $index, $index + 4), 16)) % $mod;
+            $value = intval(intval($value << 16) + intval(substr($hash, $index, $index + 4), 16)) % $mod;
         }
 
         return $value === 0;
     }
 
     /**
-     * @param \ProvablyFair\Contracts\SeedInterface $serverSeed
-     * @param \ProvablyFair\Contracts\SeedInterface $clientSeed
+     * @param SeedInterface $serverSeed
+     * @param SeedInterface $clientSeed
      *
      * @return float
      */

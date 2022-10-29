@@ -16,8 +16,6 @@
         "php": "^7.0|^8.0"
     },
     "require-dev": {
-        "dancryer/php-docblock-checker": "^1.10",
-        "phpstan/phpstan": "0.*.*",
         "phpunit/phpunit": "^6.0|^7.0|^8.0|^9.0",
         "rogervila/php-sonarqube-scanner": "^1.0"
     },
@@ -41,8 +39,6 @@
     "scripts": {
         "test": [
             "composer validate",
-            "vendor/bin/phpdoccheck",
-            "vendor/bin/phpstan analyse --level 7 src tests",
             "vendor/bin/phpunit"
         ]
     }

@@ -1,15 +1,14 @@
 <?php
 
+namespace ProvablyFairTests;
+
 use PHPUnit\Framework\TestCase;
 use ProvablyFair\Exceptions\InvalidSeedException;
 use ProvablyFair\Seed;
 
 final class SeedTest extends TestCase
 {
-    /**
-     * @return void
-     */
-    public function test_fails_if_seed_is_not_valid()
+    public function test_fails_if_seed_is_not_valid(): void
     {
         $this->expectException(InvalidSeedException::class);
 

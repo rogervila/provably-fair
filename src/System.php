@@ -8,51 +8,26 @@ use ProvablyFair\Contracts\SystemInterface;
 
 class System implements SystemInterface
 {
-    /**
-     * @var AlgorithmInterface
-     */
-    private $algorithm;
-
-    /**
-     * @param AlgorithmInterface $algorithm
-     */
-    public function __construct(AlgorithmInterface $algorithm)
-    {
-        $this->algorithm = $algorithm;
+    public function __construct(
+        protected readonly AlgorithmInterface $algorithm
+    ) {
     }
 
-    /**
-     * @param SeedInterface $seed
-     *
-     * @return SeedInterface
-     */
     public function generateServerSeed(SeedInterface $seed): SeedInterface
     {
         $class = get_class($seed);
 
-        $hash = hash($this->algorithm->getValue(), $seed->getValue());
+        $hash = hash($this->algorithm->value, $seed->value);
 
         return new $class($hash);
     }
 
-    /**
-     * @param string $key
-     * @param string $value
-     *
-     * @return string
-     */
-    private function createHmac(string $key, string $value): string
+    protected function createHmac(string $key, string $value): string
     {
-        return hash_hmac($this->algorithm->getValue(), $value, $key);
+        return hash_hmac($this->algorithm->value, $value, $key);
     }
 
-    /**
-     * @param string $hash
-     * @param int $mod
-     *
-     * @return bool
-     */
-    private static function divisible(string $hash, int $mod): bool
+    protected static function divisible(string $hash, int $mod): bool
     {
         /*  We will read in 4 hex at a time, but the first chunk might be a bit smaller
             so ABCDEFGHIJ should be chunked like  AB CDEF GHIJ */
@@ -69,15 +44,9 @@ class System implements SystemInterface
         return $value === 0;
     }
 
-    /**
-     * @param SeedInterface $serverSeed
-     * @param SeedInterface $clientSeed
-     *
-     * @return float
-     */
     public function calculate(SeedInterface $serverSeed, SeedInterface $clientSeed): float
     {
-        $hash = $this->createHmac($serverSeed->getValue(), $clientSeed->getValue());
+        $hash = $this->createHmac($serverSeed->value, $clientSeed->value);
 
         /* In 1 of 101 result is 0. */
         if ($this->divisible($hash, 101)) {

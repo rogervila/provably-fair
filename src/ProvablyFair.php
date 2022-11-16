@@ -11,8 +11,8 @@ class ProvablyFair
     protected SystemInterface $system;
 
     public function __construct(
-        protected readonly SeedInterface      $clientSeed,
-        protected readonly SeedInterface      $serverSeed,
+        protected readonly SeedInterface $clientSeed,
+        protected readonly SeedInterface $serverSeed,
         protected readonly AlgorithmInterface $algorithm,
     ) {
         $this->setSystem(new System($this->algorithm));

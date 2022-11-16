@@ -7,7 +7,7 @@ use ProvablyFair\Exceptions\InvalidSeedException;
 
 class Seed implements SeedInterface
 {
-    const MINIMUM_LENGTH = 1;
+    public const MINIMUM_LENGTH = 1;
 
     /**
      * @throws InvalidSeedException

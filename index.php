@@ -67,7 +67,7 @@ $results = (new ProvablyFair(
                 <th>Hash</th>
                 <th>Result</th>
             </tr>
-            <?php foreach($results as $result): ?>
+            <?php foreach ($results as $result): ?>
                 <tr>
                     <td>
                         <small><?php echo $result->index ?></small>

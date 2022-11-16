@@ -14,8 +14,7 @@ class ProvablyFair
         protected readonly SeedInterface      $clientSeed,
         protected readonly SeedInterface      $serverSeed,
         protected readonly AlgorithmInterface $algorithm,
-    )
-    {
+    ) {
         $this->setSystem(new System($this->algorithm));
     }
 

@@ -9,7 +9,6 @@ class Result
         public readonly int $index,
         public readonly string $hash,
         public readonly string $value,
-    )
-    {
+    ) {
     }
 }

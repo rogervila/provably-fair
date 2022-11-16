@@ -12,7 +12,7 @@ use ProvablyFair\System;
 
 final class SystemTest extends TestCase
 {
-    const SHA_512 = 'sha512';
+    public const SHA_512 = 'sha512';
 
     private function createSystem(): System
     {

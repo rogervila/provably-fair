@@ -17,8 +17,8 @@ $results = (new ProvablyFair(
     $serverSeed = new Seed($_GET['server'] ?? SERVER),
     $algorithm = new Algorithm($_GET['algorithm'] ?? ALGORITHM),
 ))->generate(
-        $amount = intval($_GET['amount'] ?? AMOUNT),
-        $prepend = boolval($_GET['prepend'] ?? PREPEND)
+    $amount = intval($_GET['amount'] ?? AMOUNT),
+    $prepend = boolval($_GET['prepend'] ?? PREPEND)
 )
 
 ?>

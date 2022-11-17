@@ -41,7 +41,7 @@
     "scripts": {
         "test": [
             "composer validate",
-            "vendor/bin/phpcs --standard=PSR12 src",
+            "vendor/bin/phpcs --standard=PSR12 --bootstrap=vendor/autoload.php src",
             "vendor/bin/psalm",
             "vendor/bin/phpunit"
         ]

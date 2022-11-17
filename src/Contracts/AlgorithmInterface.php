@@ -2,6 +2,9 @@
 
 namespace ProvablyFair\Contracts;
 
+/**
+ * @property string $value
+ */
 interface AlgorithmInterface
 {
     public function __construct(

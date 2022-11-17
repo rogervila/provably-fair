@@ -4,18 +4,22 @@ use ProvablyFair\Algorithm;
 use ProvablyFair\ProvablyFair;
 use ProvablyFair\Seed;
 
-require(__DIR__ . '/vendor/autoload.php');
+require __DIR__ . '/vendor/autoload.php';
 
 const ALGORITHM = 'sha512';
 const SERVER = 'example';
 const CLIENT = 'example';
 const AMOUNT = 100;
+const PREPEND = false;
 
 $results = (new ProvablyFair(
     $clientSeed = new Seed($_GET['client'] ?? CLIENT),
     $serverSeed = new Seed($_GET['server'] ?? SERVER),
     $algorithm = new Algorithm($_GET['algorithm'] ?? ALGORITHM),
-))->generate($amount = intval($_GET['amount'] ?? AMOUNT))
+))->generate(
+        $amount = intval($_GET['amount'] ?? AMOUNT),
+        $prepend = boolval($_GET['prepend'] ?? PREPEND)
+)
 
 ?>
 <!DOCTYPE html>
@@ -58,7 +62,13 @@ $results = (new ProvablyFair(
                 </div>
             </div>
 
-            <input type="submit" class="btn btn-primary mt-3" value="Submit">
+            <div class="mt-3">
+                <input type="submit" class="btn btn-primary me-2" value="Submit">
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="checkbox" id="prepend" name="prepend" <?php echo $prepend === true ? 'checked' : '' ?> >
+                  <label class="form-check-label" for="prepend">Prepend original server seed result</label>
+                </div>
+            </div>
         </form>
 
         <table class="table table-responsive w-100 d-block d-md-table">

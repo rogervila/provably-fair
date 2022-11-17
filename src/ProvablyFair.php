@@ -27,10 +27,10 @@ class ProvablyFair
     /**
      * @return Result[]
      */
-    public function generate(int $amount, bool $prepend = false): array
+    public function generate(int $amount, bool $include_original = false): array
     {
         $serverSeed = $this->serverSeed;
-        $results = $prepend
+        $results = $include_original
             ? [new Result(
                 $this,
                 0,
@@ -39,11 +39,11 @@ class ProvablyFair
             )]
             : [];
 
-        for ($i = 0; $i < $amount; $i++) {
+        for ($i = $include_original ? 1 : 0; $i < $amount; $i++) {
             $serverSeed = $this->system->generateServerSeed($serverSeed);
             $results[] = new Result(
                 $this,
-                $prepend ? ($i + 1) : $i,
+                $i,
                 $serverSeed->value,
                 $this->system->calculate($serverSeed, $this->clientSeed)
             );

@@ -42,7 +42,7 @@ final class SystemTest extends TestCase
     /**
      * @throws InvalidSeedException
      */
-    public function test_generate_server_seed_returns_seed_interface()
+    public function test_generate_server_seed_returns_seed_interface(): void
     {
         $system = $this->createSystem();
 

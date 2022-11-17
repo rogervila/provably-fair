@@ -35,7 +35,7 @@ final class ProvablyFairTest extends TestCase
         $this->assertArrayNotHasKey(3, $results);
     }
 
-    public function test_expected_results_with_prepend(): void
+    public function test_expected_results_including_original(): void
     {
         $provablyFair = new ProvablyFair(
             new Seed('example'),
@@ -44,7 +44,7 @@ final class ProvablyFairTest extends TestCase
         );
 
         $results = $provablyFair->generate($amount = 3, true);
-        $this->assertCount($amount + 1, $results);
+        $this->assertCount($amount, $results);
 
         $this->assertEquals(0, $results[0]->index);
         $this->assertEquals('example', $results[0]->hash);
@@ -58,10 +58,6 @@ final class ProvablyFairTest extends TestCase
         $this->assertEquals('666122910be45bf57a3092136e92bb95765cf250c8f6df980da7de112b528989fed89fa5e8bb7c13c5a6e6c295bd31eddf706dd63a7a48721003906216764207', $results[2]->hash);
         $this->assertEquals(129.0, $results[2]->value);
 
-        $this->assertEquals(3, $results[3]->index);
-        $this->assertEquals('c76f6faacb7bf9a0250155f529a93784656070e97071d56f5044e6d071963fff8e123a2e36da8dbc671d62d89c185281542b848d85abd4fce1809333e060c6eb', $results[3]->hash);
-        $this->assertEquals(136.0, $results[3]->value);
-
-        $this->assertArrayNotHasKey(4, $results);
+        $this->assertArrayNotHasKey(3, $results);
     }
 }

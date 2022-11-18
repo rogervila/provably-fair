@@ -9,7 +9,7 @@ use ProvablyFair\Contracts\SystemInterface;
 class System implements SystemInterface
 {
     public function __construct(
-        protected readonly AlgorithmInterface $algorithm
+        public readonly AlgorithmInterface $algorithm
     ) {
     }
 

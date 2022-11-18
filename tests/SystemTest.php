@@ -4,6 +4,7 @@ namespace ProvablyFairTests;
 
 use PHPUnit\Framework\TestCase;
 use ProvablyFair\Algorithm;
+use ProvablyFair\Contracts\AlgorithmInterface;
 use ProvablyFair\Contracts\SeedInterface;
 use ProvablyFair\Exceptions\InvalidAlgorithmException;
 use ProvablyFair\Exceptions\InvalidSeedException;
@@ -21,6 +22,12 @@ final class SystemTest extends TestCase
         } catch (InvalidAlgorithmException $e) {
             $this->fail($e->getMessage());
         }
+    }
+
+    public function test_readonly_properties(): void
+    {
+        $system = new System($algorithm = $this->createMock(AlgorithmInterface::class));
+        $this->assertEquals($system->algorithm, $algorithm);
     }
 
     public function test_calculate_expected_result(): void

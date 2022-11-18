@@ -2,6 +2,9 @@
 
 namespace ProvablyFair\Contracts;
 
+/**
+ * @property string $algorithm
+ */
 interface SystemInterface
 {
     public function generateServerSeed(SeedInterface $seed): SeedInterface;

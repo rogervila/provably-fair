@@ -3,17 +3,18 @@
 namespace ProvablyFair;
 
 use ProvablyFair\Contracts\AlgorithmInterface;
+use ProvablyFair\Contracts\ProvablyFairInterface;
 use ProvablyFair\Contracts\SeedInterface;
 use ProvablyFair\Contracts\SystemInterface;
 
-class ProvablyFair
+class ProvablyFair implements ProvablyFairInterface
 {
     protected SystemInterface $system;
 
     public function __construct(
-        protected readonly SeedInterface $clientSeed,
-        protected readonly SeedInterface $serverSeed,
-        protected readonly AlgorithmInterface $algorithm,
+        public readonly SeedInterface $clientSeed,
+        public readonly SeedInterface $serverSeed,
+        public readonly AlgorithmInterface $algorithm,
     ) {
         $this->setSystem(new System($this->algorithm));
     }
@@ -22,6 +23,11 @@ class ProvablyFair
     {
         $this->system = $system;
         return $this;
+    }
+
+    public function getSystem(): SystemInterface
+    {
+        return $this->system;
     }
 
     /**

@@ -2,13 +2,39 @@
 
 namespace ProvablyFairTests;
 
+use Exception;
 use PHPUnit\Framework\TestCase;
 use ProvablyFair\Algorithm;
+use ProvablyFair\Contracts\AlgorithmInterface;
+use ProvablyFair\Contracts\ProvablyFairInterface;
+use ProvablyFair\Contracts\SeedInterface;
+use ProvablyFair\Contracts\SystemInterface;
+use ProvablyFair\Exceptions\InvalidAlgorithmException;
+use ProvablyFair\Exceptions\InvalidSeedException;
 use ProvablyFair\ProvablyFair;
 use ProvablyFair\Seed;
 
 final class ProvablyFairTest extends TestCase
 {
+    public function test_properties(): void
+    {
+        $provablyFair = new ProvablyFair(
+            $clientSeed = $this->createMock(SeedInterface::class),
+            $serverSeed = $this->createMock(SeedInterface::class),
+            $algorithm = $this->createMock(AlgorithmInterface::class),
+        );
+
+        $this->assertInstanceOf(ProvablyFairInterface::class, $provablyFair);
+
+        $this->assertEquals($provablyFair->clientSeed, $clientSeed);
+        $this->assertEquals($provablyFair->serverSeed, $serverSeed);
+        $this->assertEquals($provablyFair->algorithm, $algorithm);
+
+        $this->assertInstanceOf(SystemInterface::class, $provablyFair->getSystem());
+        $provablyFair->setSystem($system = $this->createMock(SystemInterface::class));
+        $this->assertEquals($system, $provablyFair->getSystem());
+    }
+
     public function test_expected_results(): void
     {
         $provablyFair = new ProvablyFair(
@@ -59,5 +85,49 @@ final class ProvablyFairTest extends TestCase
         $this->assertEquals(129.0, $results[2]->value);
 
         $this->assertArrayNotHasKey(3, $results);
+    }
+
+    /**
+     * @throws InvalidAlgorithmException
+     * @throws InvalidSeedException
+     * @throws Exception
+     */
+    public function test_random_calculations(): void
+    {
+        $available_algorithms = hash_hmac_algos();
+
+        foreach ($available_algorithms as $algorithm) {
+            $amount = random_int(10, 100);
+            $provablyFair = new ProvablyFair(
+                new Seed(uniqid()),
+                new Seed(uniqid()),
+                new Algorithm($algorithm),
+            );
+
+            $results = $provablyFair->generate($amount, boolval(random_int(0, 1)));
+            $this->assertCount($amount, $results);
+
+            for ($i = 0; $i < $amount; $i++) {
+                $this->assertEquals($i, $results[$i]->index);
+
+                if ($i === ($amount - 1)) continue;
+
+                $currentResults = (new ProvablyFair(
+                    $results[$i]->provablyFair->clientSeed,
+                    new Seed($results[$i]->hash),
+                    $results[$i]->provablyFair->algorithm,
+                ))->generate(1);
+
+                $this->assertEquals(
+                    $currentResults[0]->hash,
+                    $results[$i + 1]->hash
+                );
+
+                $this->assertEquals(
+                    $currentResults[0]->value,
+                    $results[$i + 1]->value
+                );
+            }
+        }
     }
 }

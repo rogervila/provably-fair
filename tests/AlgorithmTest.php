@@ -8,9 +8,15 @@ use ProvablyFair\Exceptions\InvalidAlgorithmException;
 
 final class AlgorithmTest extends TestCase
 {
-    public function test_valid(): void
+    /**
+     * @throws InvalidAlgorithmException
+     */
+    public function test_property(): void
     {
-        $this->assertInstanceOf(Algorithm::class, new Algorithm('sha512'));
+        $algorithms = hash_hmac_algos();
+
+        $algorithm = new Algorithm($value = $algorithms[array_rand($algorithms)]);
+        $this->assertEquals($algorithm->value, $value);
     }
 
     /**

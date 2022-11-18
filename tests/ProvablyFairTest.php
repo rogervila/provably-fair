@@ -110,7 +110,9 @@ final class ProvablyFairTest extends TestCase
             for ($i = 0; $i < $amount; $i++) {
                 $this->assertEquals($i, $results[$i]->index);
 
-                if ($i === ($amount - 1)) continue;
+                if ($i === ($amount - 1)) {
+                    continue;
+                }
 
                 $currentResults = (new ProvablyFair(
                     $results[$i]->provablyFair->clientSeed,

@@ -29,7 +29,7 @@ install:
     - echo extension=php_mbstring.dll >> php.ini
     - echo extension=php_sqlite3.dll >> php.ini
     - echo extension=php_pdo_sqlite.dll >> php.ini
-    - IF NOT EXIST C:\tools\composer.phar (cd C:\tools && appveyor DownloadFile https://getcomposer.org/download/2.4.4/composer.phar)
+    - IF NOT EXIST C:\tools\composer.phar (cd C:\tools && appveyor DownloadFile https://getcomposer.org/download/2.6.5/composer.phar)
     - php C:\tools\composer.phar --version
     - cd C:\projects\app
 
@@ -40,4 +40,4 @@ before_test:
 
 test_script:
     - cd C:\projects\app
-    - php C:\tools\composer.phar test
+    - php ./vendor/bin/phpunit --no-coverage

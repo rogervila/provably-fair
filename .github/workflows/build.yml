@@ -12,7 +12,7 @@ jobs:
       fail-fast: false
       matrix:
         os: [ubuntu-latest, windows-latest, macOS-latest]
-        php: ['8.3', '8.2', '8.1']
+        php: ['8.4', '8.3', '8.2', '8.1']
 
     name: PHP ${{ matrix.php }} - ${{ matrix.os }}
 
@@ -34,16 +34,3 @@ jobs:
         run: composer test
         env:
           XDEBUG_MODE: coverage
-
-  sonarcloud:
-    name: SonarCloud
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v5
-        with:
-          fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
-      - name: SonarCloud Scan
-        uses: SonarSource/sonarcloud-github-action@master
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
